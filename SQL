@@ -1,0 +1,29 @@
+drop table if exists PERSONAL_CARD;
+
+    
+CREATE TABLE IF NOT EXISTS PERSONAL_CARD (
+    id INT NOT NULL IDENTITY PRIMARY KEY,
+    ime VARCHAR(255),
+    prezime VARCHAR(255),
+    oib VARCHAR(32) UNIQue,
+    status VARCHAR(32),
+    datetime TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+);
+
+
+
+INSERT INTO PERSONAL_CARD(ime, prezime, oib, status) VALUES ('Njonjo', 'Pišta', '02937486920', 'ACTIVE');
+INSERT INTO PERSONAL_CARD(ime, prezime, oib, status) VALUES ('Miki', 'Lo', '22374869203', 'INACTIVE');
+INSERT INTO PERSONAL_CARD(ime, prezime, oib, status) VALUES ('Pajdo', 'Lukašenko', '11111111119', 'INACTIVE');
+INSERT INTO PERSONAL_CARD(ime, prezime, oib, status) VALUES ('Grga', 'Lugar', '43526374857', 'ACTIVE');
+
+
+DELETE FROM PERSONAL_CARD WHERE id = 1;
+
+UPDATE PERSONAL_CARD
+SET status = 'ACTIVE'
+WHERE oib = '11111111119'; 
+
+SELECT * FROM PERSONAL_CARD WHERE oib = '11111111119';    
+
+SELECT * FROM PERSONAL_CARD;
