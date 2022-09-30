@@ -1,0 +1,1 @@
+PersonalCard [id=5, ime=Pajdo, prezime=Lukašenko, oib=11111111219, status=ACTIVE, datetime=2022-09-29 23:28:51.98529]
