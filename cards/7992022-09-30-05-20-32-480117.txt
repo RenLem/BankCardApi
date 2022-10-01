@@ -1,1 +1,0 @@
-PersonalCard [id=56, ime=Oblad, prezime=Oblada, oib=799, status=INACTIVE, datetime=2022-09-30 05:20:32.480117]

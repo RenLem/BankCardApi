@@ -1,5 +1,6 @@
 package by.renatopuskaric.bank.controllers;
 
+import java.io.IOException;
 import java.util.List;
 
 
@@ -24,34 +25,34 @@ public class PersonalCardController {
 	PersonalCardService personalCardService;
 	
 	@GetMapping("/findAll")
-	public List<PersonalCard> findAll(){
+	public List<PersonalCard> findAll() throws IOException, Exception {
 		
 		return personalCardService.findAllPersonalCards();
 	}
 	
 	@GetMapping("/findByOIB/{PersonalCardOIB}")
-	private PersonalCard getPersonalCardByOIB(@PathVariable("PersonalCardOIB") String personalCardOIB){
+	private PersonalCard getPersonalCardByOIB(@PathVariable("PersonalCardOIB") String personalCardOIB) throws IOException, Exception {
 		return personalCardService.findPersonalCardByOIB(personalCardOIB);
 	}
 	
 	@GetMapping("/findById/{PersonalCardId}")
-	private List<PersonalCard> getPersonalCardById(@PathVariable("PersonalCardId") int personalCardId){
+	private List<PersonalCard> getPersonalCardById(@PathVariable("PersonalCardId") int personalCardId) throws IOException, Exception {
 		return personalCardService.findPersonalCardById(personalCardId);
 	}
 	
 	@PostMapping("/insert")
-	private String insertPersonalCard(@RequestBody PersonalCard personalCard) {
+	private String insertPersonalCard(@RequestBody PersonalCard personalCard) throws IOException, Exception  {
 		return personalCardService.insertPersonalCard(personalCard);
 		
 	}
 	
 	@PutMapping("/update")
-	private String updatePersonalCard(@RequestBody PersonalCard personalCard) {
+	private String updatePersonalCard(@RequestBody PersonalCard personalCard) throws IOException, Exception  {
 		return personalCardService.updatePersonalCard(personalCard).toString();
 	}
 	
 	@PutMapping("/make")
-	private String makePersonalCard(@RequestBody PersonalCard personalCard) {
+	private String makePersonalCard(@RequestBody PersonalCard personalCard) throws IOException, Exception  {
 		PersonalCard databasePersonalCard =  getPersonalCardByOIB(personalCard.getOib());
 		
 		if(personalCard.getStatus().equals("ACTIVE")) {
@@ -82,7 +83,7 @@ public class PersonalCardController {
 	}
 	
 	@DeleteMapping("/deleteByOIB/{PersonalCardOIB}")
-	private String deleteBookByID(@PathVariable("PersonalCardOIB") String personalCardOIB) {
+	private String deleteBookByID(@PathVariable("PersonalCardOIB") String personalCardOIB) throws IOException, Exception {
 		CardUtilities.makeInactiveIfDeleted(personalCardOIB);
 		return personalCardService.deleteByOIB(personalCardOIB);
 	}

@@ -1,0 +1,1 @@
+PersonalCard [id=60, ime=Oblak, prezime=Sjedi, oib=008989898899, status=ACTIVE, datetime=2022-10-01 15:24:05.740719]
